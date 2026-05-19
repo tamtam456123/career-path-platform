@@ -976,21 +976,21 @@ export default function CareerPathFramework() {
     <div style={{
       fontFamily: "'Instrument Sans', 'DM Sans', system-ui, sans-serif",
       minHeight: "100vh",
-      background: "var(--bg, #0D0F12)",
+      background: "var(--bg, #3D40DF)",
       color: "var(--text, #E2E4E9)",
       padding: "0",
     }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
         :root {
-          --bg: #0D0F12;
-          --surface: #161920;
-          --surface2: #1C2029;
-          --border: #282D38;
-          --border-hover: #3A4050;
+          --bg: #3D40DF;
+          --surface: #3336CC;
+          --surface2: #2D30BB;
+          --border: rgba(255,255,255,0.15);
+          --border-hover: rgba(255,255,255,0.28);
           --text: #E2E4E9;
-          --text-muted: #8B91A0;
-          --text-dim: #5C6273;
+          --text-muted: #B0B4F0;
+          --text-dim: #8486CC;
           --accent: #E8553A;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
