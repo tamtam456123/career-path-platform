@@ -121,6 +121,31 @@ body {
   margin-top: 8px;
 }
 
+.skill-rating {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.rating-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.15s;
+}
+.rating-btn:hover {
+  border-color: var(--border-hover);
+  background: var(--surface2);
+}
+.rating-btn.filled {
+  opacity: 0.9;
+}
+
 .comparison-dot {
   width: 8px;
   height: 8px;

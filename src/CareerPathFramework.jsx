@@ -951,6 +951,15 @@ export default function CareerPathFramework() {
     collaboration: false,
     growthMindset: false,
   });
+  const [ratings, setRatings] = useState({});
+
+  const getRatingKey = (sectionKey, itemIndex) =>
+    `${selectedDepartment}/${selectedRole}/${selectedLevel}/${sectionKey}/${itemIndex}`;
+
+  const handleRating = (sectionKey, itemIndex, value) => {
+    const key = getRatingKey(sectionKey, itemIndex);
+    setRatings(prev => ({ ...prev, [key]: prev[key] === value ? 0 : value }));
+  };
 
   const dept = POSITIONS[selectedDepartment];
   const role = dept.roles[selectedRole];
@@ -1169,12 +1178,27 @@ export default function CareerPathFramework() {
                 </div>
                 {isOpen && (
                   <div className="section-body">
-                    {items.map((item, i) => (
-                      <div key={i} className="skill-item">
-                        <span className="skill-bullet" style={{ background: role.color }}></span>
-                        <span>{item}</span>
-                      </div>
-                    ))}
+                    {items.map((item, i) => {
+                      const ratingKey = getRatingKey(key, i);
+                      const currentRating = ratings[ratingKey] || 0;
+                      return (
+                        <div key={i} className="skill-item">
+                          <span className="skill-bullet" style={{ background: role.color }}></span>
+                          <span style={{ flex: 1 }}>{item}</span>
+                          <div className="skill-rating">
+                            {[1, 2, 3, 4].map(r => (
+                              <button
+                                key={r}
+                                className={`rating-btn ${r <= currentRating ? "filled" : ""}`}
+                                style={r <= currentRating ? { background: role.color, borderColor: role.color } : {}}
+                                onClick={(e) => { e.stopPropagation(); handleRating(key, i, r); }}
+                                title={["Beginner", "Familiar", "Proficient", "Expert"][r - 1]}
+                              />
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
